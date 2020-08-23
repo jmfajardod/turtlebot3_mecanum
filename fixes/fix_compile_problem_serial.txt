@@ -1,0 +1,3 @@
+Inside libraries -> ros_lib -> ArduinoHardware.h
+
+Change lines 62~ and 76, 79 and 80 
