@@ -1,0 +1,8 @@
+RRTPlanner:
+  publish_scale: 210.0
+  max_nodes: 5000
+  max_step_size: 0.4
+  goal_radius: 0.4
+  rewire_radius:  1.0
+  free_threshold: 90
+  

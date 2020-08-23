@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- ************************************************************************************************ -->
+    <!-- ************************************************************************************************ -->
+    <!-- Load the urdf into the parameter server. -->
+    <arg name="robot_xacro" value="$(find turtlebot3_mecanum_description)/urdf/turtlebot3_mecanum.urdf.xacro"/>
+
+    <param 
+        name="robot_description"  
+        command="$(find xacro)/xacro --inorder $(arg robot_xacro)" 
+    />
+
+    <!-- ************************************************************************************************ -->
+    <!-- ************************************************************************************************ -->
+    <!-- Create the Robot State Publisher -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" />
+
+    <!-- ************************************************************************************************ -->
+    <!-- ************************************************************************************************ -->
+    <!-- slam_karto -->
+    <node pkg="slam_karto" type="slam_karto" name="slam_karto" output="screen">
+        <rosparam command="load" file="$(find turtlebot3_mecanum_slam)/config/karto_mapper_params.yaml" />
+    </node>
+
+    <!-- ************************************************************************************************ -->
+    <!-- ************************************************************************************************ -->
+    <!-- RViz -->
+    <node 
+        pkg="rviz" 
+        type="rviz" 
+        name="rviz" 
+        args="-d $(find turtlebot3_mecanum_slam)/rviz/karto_rviz.rviz"
+    />
+
+</launch>

@@ -1,0 +1,2 @@
+PotentialFieldPlanner:
+  publish_scale: 100.0 # Potential OccupancyGrid max value

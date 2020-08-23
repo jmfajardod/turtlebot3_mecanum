@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <!-- Load the urdf into the parameter server. -->
+    <arg name="robot_xacro" value="$(find turtlebot3_mecanum_description)/urdf/turtlebot3_mecanum.urdf.xacro"/>
+
+    <param 
+        name="robot_description"  
+        command="$(find xacro)/xacro --inorder $(arg robot_xacro)" 
+    />
+
+    <!-- ************************************************************************************************ -->
+    <!-- ************************************************************************************************ -->
+    <!-- Create the Robot State Publisher -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" />
+
+    <node pkg="rviz" type="rviz" name="rviz_Visualization" args="-d $(find turtlebot3_mecanum_description)/rviz/view_model.rviz"/>
+
+    <!-- ************************************************************************************************ -->
+    <!-- ************************************************************************************************ -->
+    <!-- Create Joint State Publisher-->
+
+    <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint"/>
+    
+
+</launch>
