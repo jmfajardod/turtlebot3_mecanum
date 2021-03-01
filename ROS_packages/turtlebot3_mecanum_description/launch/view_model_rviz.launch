@@ -4,9 +4,11 @@
     <!-- Load the urdf into the parameter server. -->
     <arg name="robot_xacro" value="$(find turtlebot3_mecanum_description)/urdf/turtlebot3_mecanum.urdf.xacro"/>
 
+    <arg name="joint_pub" default="True"/>
+
     <param 
         name="robot_description"  
-        command="$(find xacro)/xacro --inorder $(arg robot_xacro)" 
+        command="$(find xacro)/xacro $(arg robot_xacro)" 
     />
 
     <!-- ************************************************************************************************ -->
@@ -20,7 +22,7 @@
     <!-- ************************************************************************************************ -->
     <!-- Create Joint State Publisher-->
 
-    <node pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint"/>
+    <node if="$(arg joint_pub)" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" name="joint"/>
     
 
 </launch>
