@@ -63,7 +63,7 @@
       <geometry>
         <cylinder length="0.018" radius="0.033"/>
       </geometry>
-      <material name="dark"/>
+      <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -94,7 +94,7 @@
       <geometry>
         <cylinder length="0.018" radius="0.033"/>
       </geometry>
-      <material name="dark"/>
+      <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -125,7 +125,7 @@
       <geometry>
         <cylinder length="0.018" radius="0.033"/>
       </geometry>
-      <material name="dark"/>
+      <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -156,7 +156,7 @@
       <geometry>
         <cylinder length="0.018" radius="0.033"/>
       </geometry>
-      <material name="dark"/>
+      <material name="white"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -213,13 +213,13 @@
   </link>
 
   <!-- CAMERA -->
-  <joint name="camera_joint" type="fixed">
+  <joint name="camera_rgb_joint_base" type="fixed">
     <origin xyz="0.073 -0.011 0.084" rpy="0 0 0"/>
     <parent link="base_link"/>
-    <child link="camera_link"/>
+    <child link="camera_rgb_link"/>
   </joint>
 
-  <link name="camera_link">
+  <link name="camera_rgb_link">
     <collision>
       <origin xyz="0.005 0.011 0.013" rpy="0 0 0"/>
       <geometry>
@@ -230,7 +230,7 @@
 
   <joint name="camera_rgb_joint" type="fixed">
     <origin xyz="0.003 0.011 0.009" rpy="0 0 0"/>
-    <parent link="camera_link"/>
+    <parent link="camera_rgb_link"/>
     <child link="camera_rgb_frame"/>
   </joint>
   <link name="camera_rgb_frame"/>
@@ -241,5 +241,36 @@
     <child link="camera_rgb_optical_frame"/>
   </joint>
   <link name="camera_rgb_optical_frame"/>
+
+  <!-- RGBD RealSense Camera -->
+  <joint name="realsense_base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_realsense"/>
+    <origin xyz="0.039 0.0 0.093" rpy="0 0 0"/>
+  </joint>
+
+  <link name="base_realsense">
+    <visual name="">
+      <origin xyz="0.0 0.0 0.0215" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.0115" length="0.043"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="0.0115" length="0.043"/>
+      </geometry>
+    </collision>
+    
+  </link>
+  
+  <xacro:arg name="use_nominal_extrinsics" default="true" />
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
+
+  <xacro:sensor_d435i parent="base_realsense" use_nominal_extrinsics="$(arg use_nominal_extrinsics)">
+    <origin xyz="0 0 0.043" rpy="0 0 0"/>
+  </xacro:sensor_d435i>
 
 </robot>
