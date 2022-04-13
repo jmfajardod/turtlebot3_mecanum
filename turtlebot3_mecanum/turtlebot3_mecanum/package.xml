@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>turtlebot3</name>
+  <version>1.2.5</version>
+  <description>
+    ROS packages for the Turtlebot3 Mecanum (meta package)
+  </description>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>turtlebot3_mecanum_bringup</exec_depend>
+  <exec_depend>turtlebot3_mecanum_description</exec_depend>
+  <exec_depend>turtlebot3_mecanum_navigation</exec_depend>
+  <exec_depend>turtlebot3_mecanum_slam</exec_depend>
+  <export><metapackage/></export>
+</package>
