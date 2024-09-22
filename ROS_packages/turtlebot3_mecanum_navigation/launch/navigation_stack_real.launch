@@ -14,12 +14,12 @@
     <!-- ************************************************************************************************ -->
     <!-- ************************************************************************************************ -->
     <!-- Create the Robot State Publisher -->
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" />
+    <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" /> -->
 
     <!-- ************************************************************************************************ -->
     <!-- ************************************************************************************************ -->
     <!-- Arguments -->
-    <arg name="map_file" default="$(find turtlebot3_mecanum_navigation)/map/real_map2.yaml"/>
+    <arg name="map_file" default="$(find turtlebot3_mecanum_navigation)/map/house_map.yaml"/>
     <arg name="move_forward_only" default="false"/>
 
     <!-- Map server -->

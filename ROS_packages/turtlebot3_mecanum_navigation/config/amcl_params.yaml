@@ -36,7 +36,7 @@ first_map_only: false # When set to true, AMCL will only use the first map it su
 # -- Laser Model Parameters -- #
 
 laser_min_range: -1.0 # Minimum scan range to be considered; -1.0 will cause the laser's reported minimum range to be used.
-laser_max_range: 10.0 # Maximum scan range to be considered; -1.0 will cause the laser's reported maximum range to be used.
+laser_max_range: -1.0 # Maximum scan range to be considered; -1.0 will cause the laser's reported maximum range to be used.
 
 laser_max_beams: 360 # How many evenly-spaced beams in each scan to be used when updating the filter.
 
