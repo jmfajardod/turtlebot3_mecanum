@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>turtlebot3_msgs</name>
+  <name>turtlebot3_mecanum_msgs</name>
   <version>1.0.1</version>
   <description>
     Message and service types: custom messages and services for TurtleBot3 packages
